@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0071)http://weixin.hbjyjt.com/weixin/self/queryFlot_lz.jsp?flot=L32500550710 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<base href="http://weixin.hbjyjt.com:80/weixin/">--><base href=".">
+    
+    <title>敬业高品钢电子标牌</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=10.0, user-scalable=yes">
+	
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+	<link href="./敬业高品钢电子标牌_files/weui.css" rel="stylesheet" type="text/css">
+	<script language="javascript" type="text/javascript" src="./敬业高品钢电子标牌_files/jquery-1.7.2.js.下载"></script>
+  <script type="text/javascript">
+	$(document).ready(function() {
+		//批次号
+		var flot = "L32500550710";
+		//flag标志
+		var flag = "null";
+		//var flots = flot.indexOf("X");
+		queryCfNew(flot);
+		//queryQualityCertificate(flot);
+	});
+	function queryCfNew(flot) {
+	
+		if (flot==""||flot==null) {
+			$.weui.topTips("查询的批次号为空");
+			return;
+		}
+		$.ajax({
+			url : '/weixin/xt/queryFlotLZ',
+			data : {"flot" : flot},
+			type : 'post',
+			dataType : 'json',
+			success : function(data) {
+				var trStr = "";
+				$.each(data,function(index, b) {
+					var trStr = "";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">机组</td><td class=\"cf_td2\">"+b.jizu+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">品名</td><td class=\"cf_td2\">"+b.pingming+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">钢卷编号</td><td class=\"cf_td2\">"+b.gangjuan+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">牌号</td><td class=\"cf_td2\">"+b.paihao+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">规格</td><td class=\"cf_td2\">"+b.guige+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">净重</td><td class=\"cf_td2\">"+b.jingzhong+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">毛重</td><td class=\"cf_td2\">"+b.maozhong+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">钢卷内径</td><td class=\"cf_td2\">"+b.neijing+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">钢卷长度</td><td class=\"cf_td2\">"+b.changdu+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">执行标准</td><td class=\"cf_td2\">"+b.biaozhu+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">表面等级</td><td class=\"cf_td2\">"+b.dengji+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">镀层种类</td><td class=\"cf_td2\">"+b.zhonglei+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">镀层重量</td><td class=\"cf_td2\">"+b.zhongliang+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">表面结构</td><td class=\"cf_td2\">"+b.jiegou+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">钝化方式</td><td class=\"cf_td2\">"+b.fangshi+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">涂油</td><td class=\"cf_td2\">"+b.tuyou+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">涂层结构</td><td class=\"cf_td2\">"+b.tucengjiegou+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">颜色</td><td class=\"cf_td2\">"+b.yanse+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">漆膜厚度</td><td class=\"cf_td2\">"+b.houdu+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr1\"><td class=\"cf_td1\">涂层种类</td><td class=\"cf_td2\">"+b.tucengzhonglei+"</td></tr>";
+					trStr = trStr + "<tr class=\"cf_tr2\"><td class=\"cf_td1\">生产日期</td><td class=\"cf_td2\">"+b.riqi+"</td></tr>";
+					
+					$("#cfInfo").append(trStr);
+				});
+					//hideLoader();
+				},
+				error : function(data) {
+					$.weui.toast("服务器繁忙，稍后再试.....");
+				}
+		});
+	}
+
+function iFrameHeight(elm) {   
+					/* var ifm= elm || $('#iframepage')[0];
+				    var subWeb = document.frames ? elm.document : ifm.contentDocument;
+				    if(ifm != null && subWeb != null) {
+				        setTimeout(function(){
+				            ifm.height = $(subWeb.body).height();
+				        },12);
+				    } */
+				    if (iframe) {
+             //确认对象
+             var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+             if (iframeWin.document.body) {
+             iframe.height = iframeWin.document.body.scrollHeight;   //获取ifram内页面内的内容高度
+             iframe.width = iframeWin.document.body.scrollWidth;   //获取ifram内页面内的内容高度
+            }
+           }
+	}
+	
+	function queryQualityCertificate(flot){
+		if (flot==""||flot==null) {
+			$("#quality_certificate").attr('src', "/weixin/img/zbs_fail.jpg");
+			return;
+		}
+		
+		$.ajax({
+			url : '/weixin/xt/queryQualityCertificate',
+			data : {"flot" : flot},
+			type : 'post',
+			dataType : 'text',
+			success : function(data) {
+				if(data !=null && data != ""){
+					$("#quality_certificate").attr('src', "http://111.11.82.156/zbsfile/"+ data +".png");
+				}else{
+					$("#quality_certificate").attr('src', "/weixin/img/zbs_fail.jpg");
+				}
+			},
+			fail : function(data) {
+				$("#quality_certificate").attr('src', "/weixin/img/zbs_fail.jpg");
+				$.weui.toast("服务器繁忙，稍后再试.....");
+			}
+		});
+	}
+	
+</script><style type="text/css">
+body{
+  margin: 0 auto;
+  background-color: white;
+}
+#title_ll{
+	width:100%;
+	height:50px;
+	background: #2E3139;
+	padding: 10px;
+}
+#title_img{
+	width:140px;
+	height:45px;
+}
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+#quality_certificate{
+	width: 95%;
+	height: 300px;
+	padding: 10px;
+}
+#tab_title{
+	display:inline;
+	text-align: center;
+}
+.table_style{
+	border-collapse:collapse;  
+	border-spacing:0;
+	margin: 10px 20px 0px 10px;
+	width:100%;
+	background-color: transparent;
+}
+.bp_td_title{
+	text-align: center;
+	color: black;
+	padding: 10px;
+	font-family:MicrosoftYaHei;
+	font-weight:bold;
+	font-size: 20px;
+}
+.flag_img{
+	width: 15px;
+	height: 15px;
+}
+.bp_td_left{
+	background-color: #C6000B;
+	padding:10px;
+	width:50%;
+	color: white;
+}
+.bp_td_right{
+	background-color: #D1333C;
+	padding:8px;
+	width:50%;
+	color: white;
+}
+.cf_tr1{
+	text-align: center;
+	background: #F5F6FA;
+	color: black;
+}
+.cf_tr2{
+	text-align: center;
+	background: #FFF0F3;
+	color: black;
+}
+.cf_tr3{
+	text-align: center;
+	background: #F5F6FA;
+	color: black;
+	font-weight:bold;
+}
+.cf_td1{
+	width:33%;
+	padding: 5px;
+}
+.cf_td2{
+	width:33%;
+	padding: 5px;
+}
+.cf_td3{
+	width:34%;
+	padding: 5px;
+}
+.wltx_tr{
+	text-align: center;
+	background: #F5F6FA;
+	color: black;
+}
+.wltx_td{
+	width:25%;
+	padding: 5px;
+	color:red;
+}
+.wltx_td2{
+	width:25%;
+	padding: 5px;
+	color:black;
+}
+#zms_title{
+	width:100%;
+	text-align: center;
+	margin-top:20px;
+	color: black;
+	padding: 10px;
+	font-family:MicrosoftYaHei;
+	font-weight:bold;
+	font-size: 20px;
+}
+.certificate_left_img{
+	width:40px;
+	heigth:30px;
+	margin-right:10px;
+}
+.certificate_right_img{
+	width:40px;
+	heigth:30px;
+	margin-left:10px;
+}
+#ryzs_div{
+	width:100%;
+	text-align: center;
+}
+.ryzs_img{
+	width:20%;
+	heigth:100px;
+}
+#content_validity_ll{
+	width:100%;
+	margin:10px;
+}
+#content_validity_left{
+	width:40%;
+	float: left;
+	margin-right:10px;
+	text-align: center;
+}
+#content_validity_right{
+	margin:10px;
+	text-align: left;
+	padding-left: 20px;
+}
+#content_validity_img{
+	width:120px;
+	heigth:120px;
+	margin:10px;
+}
+#group_name{
+	color: red;
+	font-size: 18px;
+}
+#content_validity{
+	font-size: 12px;
+}
+#lxfs_ll{
+	width:100%;
+	background: #2E3139;
+	padding: 10px 10px 25px 10px;
+	font-size: 10px;
+	margin-top: 20px;
+}
+#lxfs_left{
+	float: left;
+	text-align: center;
+}
+#lxfs_middle{
+	float: left;
+	margin-left:7px;
+	margin-right:5px;
+	text-align: center;
+}
+#lxfs_right{
+	text-align: left;
+}
+#lxfs_right_img{
+	margin-left: 20px;
+}
+.lxfs_title{
+	color: white;
+}
+#lxfs_content{
+	color: #ABADB0;
+}
+#lxfs_content a{
+	color: #ABADB0;
+}
+#line_segmentation_ll{
+	float:left;
+	width:10px;
+	text-align: center;
+}
+#line_segmentation{
+	width:1px;
+	height:50px;
+	margin-top:15px;
+	background: white;
+}
+.icon-red-dot{
+	width:5px;
+	height:5px;
+}
+</style></head>
+
+
+<body ontouchstart="">
+	<div id="title_ll"><img id="title_img" src="./敬业高品钢电子标牌_files/title_logo.png"></div>
+	<!-- <table id="jhList" class ="table_style"></table> -->
+  	<!-- <ul class="weui_cells" id="jhList">
+	</ul> -->
+	<!-- <div style="background:#EBEBEB;height:45px;vertical-align:middle;"><h3>&nbsp;&nbsp;&nbsp;成分信息</h3></div> -->
+	<!-- <table border="0" id="cfInfo" name="cfInfo" rules=rows >rules=rows 
+		<tr align="center">
+			<td valign=middle  height=40  width="100"><font>成分</font></td>
+			<td valign=middle  height=40  width="120"><font>结果</font></td>
+			<td valign=middle  height=40  width="150"><font>判定</font></td>
+		</tr>
+	</table> -->
+	<table id="cfInfo" class="table_style">
+		<tbody><tr><td colspan="3" class="bp_td_title"><img class="flag_img" src="./敬业高品钢电子标牌_files/electronic_tags_title_icon.png">产品信息</td></tr>
+		
+	<tr class="cf_tr2"><td class="cf_td1">机组</td><td class="cf_td2">2#镀锌机组</td></tr><tr class="cf_tr1"><td class="cf_td1">品名</td><td class="cf_td2">热镀锌卷</td></tr><tr class="cf_tr2"><td class="cf_td1">钢卷编号</td><td class="cf_td2">L32500550310</td></tr><tr class="cf_tr1"><td class="cf_td1">牌号</td><td class="cf_td2">DX53D+Z</td></tr><tr class="cf_tr2"><td class="cf_td1">规格</td><td class="cf_td2">1.5mm*1040mm</td></tr><tr class="cf_tr1"><td class="cf_td1">净重</td><td class="cf_td2">5960kg</td></tr><tr class="cf_tr2"><td class="cf_td1">毛重</td><td class="cf_td2">6008kg</td></tr><tr class="cf_tr1"><td class="cf_td1">钢卷内径</td><td class="cf_td2">610mm</td></tr><tr class="cf_tr2"><td class="cf_td1">钢卷长度</td><td class="cf_td2">403.5m</td></tr><tr class="cf_tr1"><td class="cf_td1">执行标准</td><td class="cf_td2">GB/T 2518-2019</td></tr><tr class="cf_tr2"><td class="cf_td1">表面等级</td><td class="cf_td2">FB</td></tr><tr class="cf_tr1"><td class="cf_td1">镀层种类</td><td class="cf_td2">纯锌镀层</td></tr><tr class="cf_tr2"><td class="cf_td1">镀层重量</td><td class="cf_td2">80g/㎡</td></tr><tr class="cf_tr1"><td class="cf_td1">表面结构</td><td class="cf_td2">無鋅花光整</td></tr><tr class="cf_tr2"><td class="cf_td1">钝化方式</td><td class="cf_td2">三价铬钝化+涂油</td></tr><tr class="cf_tr1"><td class="cf_td1">涂油</td><td class="cf_td2">轻涂油</td></tr><tr class="cf_tr2"><td class="cf_td1">涂层结构</td><td class="cf_td2"> </td></tr><tr class="cf_tr1"><td class="cf_td1">颜色</td><td class="cf_td2"> </td></tr><tr class="cf_tr2"><td class="cf_td1">漆膜厚度</td><td class="cf_td2"> </td></tr><tr class="cf_tr1"><td class="cf_td1">涂层种类</td><td class="cf_td2"></td></tr><tr class="cf_tr2"><td class="cf_td1">生产日期</td><td class="cf_td2">20250111</td></tr></tbody></table>
+	
+	<div id="zms_title"><img class="certificate_left_img" src="./敬业高品钢电子标牌_files/icon_certificate_left.png">
+		<b>企业荣誉证书 </b>
+	<img class="certificate_right_img" src="./敬业高品钢电子标牌_files/icon_certificate_right.png"></div>
+	<div id="ryzs_div">
+		<p>
+			<img class="ryzs_img" src="./敬业高品钢电子标牌_files/img_bp_lz_1.jpg">
+			<img class="ryzs_img" src="./敬业高品钢电子标牌_files/img_bp_lz_2.jpg">
+			<img class="ryzs_img" src="./敬业高品钢电子标牌_files/img_bp_lz_3.jpg">
+			<img class="ryzs_img" src="./敬业高品钢电子标牌_files/img_bp_lz_4.jpg">
+		</p>
+	</div>
+	<div id="content_validity_ll">
+		<div id="content_validity_left">
+			<img id="content_validity_img" src="./敬业高品钢电子标牌_files/img_content_validity.png">
+		</div>
+		<div id="content_validity_right">
+			<p id="group_name">敬业集团</p>
+			<p id="content_validity">敬业集团是以钢铁为主业，下辖总部钢铁、乌兰浩特钢铁、英国钢铁、广东敬业钢铁、广东粤北钢铁五大生产基地，兼营钢材深加工、增材制造3D打印、国际贸易、康养旅游、酒店的跨国集团，现有员工31000名。2022年集团销售收入3074亿元，上缴税金47.68亿元，全国500强企业名列112位，中国制造业企业500强46位，连续三年荣登《财富》世界500强榜单，2023年排名320位。2017年入选工信部第一批绿色工厂，荣膺 “钢铁行业改革开放40周年功勋企业” “2017京津冀最具影响责任品牌” “钢铁企业A+级竞争力极强企业” “环保绩效A级企业”。</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div id="lxfs_ll">
+		<div id="lxfs_left">
+			<p class="lxfs_title"><img class="icon-red-dot" src="./敬业高品钢电子标牌_files/icon_flag_red.png">&nbsp;&nbsp;联系我们</p>
+			<p id="lxfs_content">地址：河北省石家庄市平山县南甸镇敬业集团<br>网址：<a href="http://www.jingyelengzha.com/">http://www.jingyelengzha.com/</a><br>0311-966666/0311—82888999	</p>
+		    <p id="lxfs_content">评价地址：<a href="https://www.wjx.cn/vm/thbYxXC.aspx">https://www.wjx.cn/vm/thbYxXC.aspx</a><br>	</p>
+		
+		</div>
+		<br>
+		
+		<div id="lxfs_right"> 
+			<p class="lxfs_title"><img class="icon-red-dot" src="./敬业高品钢电子标牌_files/icon_flag_red.png">&nbsp;&nbsp;敬业云服务二维码</p>
+			<img id="lxfs_right_img" src="./敬业高品钢电子标牌_files/yun.gif" alt="" width="50" height="50">
+		 </div>
+		<div class="clear"></div>
+	</div>
+	<input type="hidden" id="luhao" name="luhao">
+<!-- <img src="http://111.11.82.156:80/zbsfile/210412W00001.png" width="100%" /> -->
+	<!-- <iframe id = "quality_certificate"  scrolling="no" frameborder="0" src="http://111.11.82.156/SeeWarranty.jsp?filename=210412W00002" οnlοad="iFrameHeight(this);">
+</iframe> -->
+
+
+</body></html>
